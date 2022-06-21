@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Navigation from './components/Features/Navbar';
+import Header from './components/Features/Header';
+import openSupplies from './shared/data/openSupplies.json';
+import PrefCardList from './components/Card List/PrefCardList';
+import MainFeatures from './components/Features/MainFeatures';
+import ExampleCard from './components/Features/ExampleCard'
+
 
 function App() {
+  const [ prefCardList, setPrefCard ] = useState(openSupplies);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navigation />
+      <Header />
+      <PrefCardList prefCardList={prefCardList}/>
+      <hr />
+      <MainFeatures />
+      <hr />
+      <ExampleCard />
     </div>
   );
 }
